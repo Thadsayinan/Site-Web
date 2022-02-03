@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="cnv" width="600" height="600" style="border:1px solid #d3d3d3 " onclick="dessinePoint(event )">
+    Your browser does not support the HTML canvas tag.</canvas>
+
+<script>
+
+var canvas = document.getElementById("cnv")
+var context = canvas.getContext("2d");
+
+document.getElementById("startGame").addEventListener("click", function() {
+    createGameCircle();
+});
+
+function createGameCircle() {
+    radius = 20;
+
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    var circle = [
+        context.beginPath(),
+        rand_x = Math.random(1) * max,
+        rand_y = Math.random(1) * max,
+        context.arc(rand_x, rand_y, radius, 0, 2 * Math.PI),
+        context.fill(),
+        context.closePath()
+    ];
+
+    circle;
+
+    circle.onclick = function() {
+        score++;
+        document.getElementById("score").innerHTML = (score);
+        createGameCircle();
+    }
+}
+
+</script>
+
+</body>
+</html>

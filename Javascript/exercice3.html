@@ -1,0 +1,35 @@
+<html>
+    <head>
+
+
+<title>  Javscript exercice 1</title>
+
+    </head>
+
+<body>
+
+
+
+
+<div id ="call" style="height:40px;"><p>applez moi</p></div>
+
+<br>
+<script>
+    document.getElementById("call").onmouseover = function() {mouseOver()};
+    document.getElementById("call").onmouseout = function() {mouseOut()};
+    
+    function mouseOver() {
+      document.getElementById("call").innerHTML= "CONTACTEZ NOUS";
+    }
+    
+    function mouseOut() {
+      document.getElementById("call").innerHTML="applez moi";
+    }
+
+
+   
+    </script>
+  
+</body>
+
+</html>

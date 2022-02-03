@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="myCanvas" width="400" height="400" style="border:1px solid #d3d3d3 " onclick="dessinePoint(event )">
+    Your browser does not support the HTML canvas tag.</canvas>
+
+<script>
+    document.getElementById("myCanvas").style.backgroundColor = "yellow";
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.moveTo(0,0);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.rect(0,0, 50, 50);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+
+        function myRandomColor(){
+            var x = Math.floor(Math.random() * 256);
+            var y = Math.floor(Math.random() * 256);
+            var z = Math.floor(Math.random() * 256);
+            var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+            return bgColor;
+        }
+        function dessinePoint(e) 
+       
+        {
+
+            
+            
+            var x=e.clientX
+            var y=e.clientY
+            console.log("coucou");
+            context.moveTo(30,600);
+           
+            
+            
+           
+           
+
+
+        }
+
+
+</script>
+
+</body>
+</html>

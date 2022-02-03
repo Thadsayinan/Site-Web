@@ -1,0 +1,154 @@
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>Google Maps</title>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Y32T_PJHZxYcK3BJYJFNwSl6cuvLXpo&callback=initialiser"
+        async></script>
+</head>
+
+<body>
+
+
+
+
+    <style>
+        #carte {
+            height: 400px;
+            width: 500px;
+        }
+
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 50;
+            padding: 10;
+        }
+    </style>
+
+    <div id="carte"></div>
+
+
+    <script>
+        var i;
+        var marquers = [
+            ["LyceeJr", 48.95849736805884, 2.5467382367423794, 1],
+            ["Marquer1", 48.959660401600786, 2.5466743037685426, 2],
+            ["Marquer2", 48.9592160923997, 2.5442526246066235, 3],
+            ["Marquer3", 48.960856054215995, 2.542822564175688, 4],
+            ["Marquer4", 48.96347397617976, 2.551128286325965, 5],
+            ["Marquer5", 48.96126693131206, 2.552458010978878, 6]
+
+        ];
+
+
+
+        function initialiser() {
+
+
+            // Objet representant une coordonnée
+            var latlng = new google.maps.LatLng(48.959023, 2.547681);
+            /*
+                Objet contenant des propriétés avec des identificateurs 
+                prédéfinis dans Google Maps permettant de définir des 
+                options d'affichage de notre carte
+            */
+            var options = {
+                center: latlng,
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            /*
+                Constructeur de la carte qui prend en paramêtre le conteneur HTML
+                dans lequel la carte doit s'afficher et les options
+            */
+            var carte = new google.maps.Map(document.getElementById("carte"), options);
+
+            for (i = 0; i < marquers.length; i++) {
+
+                var marquer = marquers[i];
+
+                const markerpro = new google.maps.Marker({
+                    position: { lat: marquer[1], lng: marquer[2] },
+                    map: carte,
+                    title: marquer[0],
+                    zIndex: marquer[3],
+                });
+
+
+                markerpro.addListener("click", function () {
+                    alert("you click on " + markerpro.title);
+                });
+
+                const contentString =
+                '<div id="content">' +
+                '<div id="siteNotice">' +
+                "</div>" +
+                '<h1 id="firstHeading" class="firstHeading">Lycée Jean Rostand</h1>' +
+                '<div id="bodyContent">' +
+                "<p><b>Jean Rostand</b>, est le lycée qui acceuille la meilleure section <b>BTS SNIR</b> d'ile de france! " +
+                "<br/> les statistiques y sont impréssionnantes... " +
+                "here We are coding fun :'!'.</p>" +
+                "<a href=https://lycee-jeanrostand.fr/>https://lycee-jeanrostand.fr</a> " +
+                "</div>" +
+                + "<br/>" +
+                '<img src="https://static.nationalgeographic.fr/files/styles/image_3200/public/re%CC%81sume%CC%81_siliconvalley.webp?w=1600&h=1014" width=500em heigth=500em>' +
+                "</div>";
+            const infowindow = new google.maps.InfoWindow({
+                content: contentString,
+            });
+            const marker = new google.maps.Marker({
+                position: { lat: marquer[1], lng: marquer[2] },
+                map: carte,
+                title: marquer[0],
+            });
+            marker.addListener("click", () => {
+                infowindow.open(carte, marker);
+            });
+            }
+
+
+
+
+
+            var lines = [
+                { lat: 48.95849736805884, lng: 2.5467382367423794 },
+                { lat: 48.959660401600786, lng: 2.5466743037685426 },
+                { lat: 48.9592160923997, lng: 2.5442526246066235 },
+                { lat: 48.960856054215995, lng: 2.542822564175688 },
+                { lat: 48.96347397617976, lng: 2.551128286325965 },
+                { lat: 48.96126693131206, lng: 2.552458010978878 }
+
+
+            ]
+
+            var polylines = new google.maps.Polyline({
+                path: lines, // chemin du tracé
+                geodesic: true,
+                strokeColor: "#d35400", // couleur du tracé
+                strokeOpacity: 1.0, // opacité du tracé
+                strokeWeight: 2 // grosseur du tracé
+
+            });
+            polylines.setMap(carte);
+
+            
+
+
+
+        }
+
+
+
+
+        // On lance l'initialisation de notre carte
+        initialiser();
+
+    </script>
+</body>
+
+</html>

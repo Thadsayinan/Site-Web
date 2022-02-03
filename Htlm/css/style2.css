@@ -1,0 +1,19 @@
+*
+
+{
+  background-color: rgb(238, 238, 238);
+}
+
+#body
+{
+
+   padding-right: 10px;
+
+
+}
+
+table, th, td 
+
+{
+    border: 1px solid black;
+}

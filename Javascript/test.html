@@ -1,0 +1,27 @@
+<html>
+<head>
+<title></title>
+<body>
+    <form>
+        <label for="mail">Pourriez-vous nous fournir une adresse mail ?</label>
+        <input type="email" id="mail" name="mail">
+        <button>Envoyer</button>
+      </form>
+
+     <script>
+      var email = document.getElementById("mail");
+
+      email.addEventListener("keyup", function (event) {
+        if(email.validity.typeMismatch) {
+          email.setCustomValidity("J'attend un e-mail, mon cher !");
+        } else {
+          email.setCustomValidity("");
+        }
+      });
+
+    </script> 
+
+
+</body>
+ 
+</html>

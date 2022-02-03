@@ -1,0 +1,56 @@
+<html>
+    <head>
+
+
+<title>  Javscript exercice 1</title>
+
+    </head>
+
+<body>
+
+
+
+</body> 
+
+
+<img id="img"  src="call_test.png"  width="50px" height="50px">
+
+<p id="p" >Contacter</p>
+
+
+
+<script>
+    document.getElementById("p").onmouseover = function() {mouseOver()};
+    document.getElementById("p").onmouseout = function() {mouseOut()};
+    
+    function mouseOver() {
+      document.getElementById("p").style.color = "red";
+    }
+    
+    function mouseOut() {
+      document.getElementById("p").style.color = "black";
+    }
+
+
+    document.getElementById("img").onmouseover = function() {imageDefaut()};
+    document.getElementById("img").onmouseout = function() {imageChange()};
+    
+    function imageDefaut() {
+      document.getElementById("img").src="call_test_2.png";
+    }
+    
+    function imageChange() {
+      document.getElementById("img").src="call_test.png";
+    }
+
+
+
+
+    
+
+   
+    </script>
+
+</body>
+
+</html>

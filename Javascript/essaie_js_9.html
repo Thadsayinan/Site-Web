@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>premier programme!</title>
+</head>
+<body>
+<script>
+var prenoms = '', prenom_en_cours;
+boucle_OK = true;
+while (boucle_OK) {
+prenom_en_cours = prompt('Entrez un prénom :');
+if (prenom_en_cours) { // test si un prénom a été rentré
+prenoms += prenom_en_cours + ' '; // Ajoute le nouveau prénom ainsi qu'une espace juste après
+} else {
+boucle_OK = false; // Aucun prénom n'a été entré, donc on fait en sorte d'invalider la condition
+}
+}
+alert('prénoms rentrés: ' + prenoms); // Affiche les prénoms à la suite
+</script>
+</body>
+</html>

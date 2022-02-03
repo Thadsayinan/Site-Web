@@ -1,0 +1,19 @@
+ var familles =`[
+    {
+        "pere" : "Kana",
+        "mere" : "Para",
+        "soeur": "Naga"
+    }
+    {
+        "pere" : "Kow",
+        "mere" : "logi",
+        "soeur": "Karthi"
+    }
+    {
+        "pere" : "Thadsha",
+        "mere" : "Meeraa",
+        "soeur": "Rishi"
+    }
+
+
+]`

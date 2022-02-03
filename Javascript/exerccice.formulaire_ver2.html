@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>
+        Formulaire
+    </title>
+</head>
+
+<body>
+    <form id="formulaire">
+
+        <label>
+            <span>Nom :</span>
+            <input id="nom" type="text" name="nom">
+            <span id="errorenom"></span>
+        </label>
+        <br>
+        <br>
+        <input type="button" value="Envoyer" onclick="validerform()">
+    </form>
+    <script>
+        function validerform() {
+
+
+            var n =document.getElementById("nom").value;
+
+            if (n.value =="") {
+
+                document.getElementById('errorenom').innerText = "verfieir votrez nom";
+                nom.focus();
+                return false;
+
+            }
+            else {
+                document.getElementById('errorenom').innerHTML = "";
+
+            }
+
+
+        }
+
+        function valider() {
+            document.getElementById("Formulaire").submit();
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<html>
+
+<head>
+
+
+  <title> Javscript exercice 1</title>
+
+</head>
+
+<body>
+
+<div id="p">Contacter</p>
+
+<script>
+  document.getElementById("p").onmouseover = function () { mouseOver() };
+  document.getElementById("p").onmouseout = function () { mouseOut() };
+
+  function mouseOver() {
+    document.getElementById("p").style.color = "red";
+  }
+
+  function mouseOut() {
+    document.getElementById("p").style.color = "black";
+  }
+</script>
+
+</body>
+
+</html>
