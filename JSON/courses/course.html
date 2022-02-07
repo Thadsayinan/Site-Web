@@ -3,8 +3,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <title>Google Maps</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Y32T_PJHZxYcK3BJYJFNwSl6cuvLXpo&callback=initialiser"
-    async></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Y32T_PJHZxYcK3BJYJFNwSl6cuvLXpo&callback=initialiser" async></script>
 </head>
 
 <body>
@@ -15,13 +14,24 @@
             width: 500px;
         }
     </style>
+    <div>
+        <select name="courses" id="number">
+            <option value="course1">Course 1</option>
+            <option value="course2">Course 2</option>
+            <option value="course3">Course 3</option>
+           
+          </select>
+
+    </div>
 
     <div id="carte"></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <script>
+window.load=initialiser();
 
-        function initialiser() {
+        function initialiser(idSelector) {
             // Objet representant une coordonnée
             var latlng = new google.maps.LatLng(48.959023, 2.547681);
             /*
@@ -44,16 +54,19 @@
 
 
             $.ajax({
-                url: "marquers_lycee.json",
+                url: "courses.json",
                 method: "GET",
                 dataType: "json",
                 success: function (marquers) {
+                   //ole.log(marquers[0]["markers"]);
                    
                     for (let i = 0; i < marquers.length; i++) {
-                        var marquer = marquers[i];
+                        var marquer = marquers[i]["markers"];
+
+                        console.log(marquer[i])
                         
                         new google.maps.Marker({
-                            position: { lat: marquer["lat"], lng: marquer["lng"] },
+                            position: { lat: marquer[i][i], lng: marquer[i][i ]},
                             map: carte,
                             //title: marquer[0],
                             //zIndex: marquer[3],
@@ -65,16 +78,7 @@
 
             }); 
 
-            var lines = [
-                { lat: 48.95849736805884, lng: 2.5467382367423794 },
-                { lat: 48.959660401600786, lng: 2.5466743037685426 },
-                { lat: 48.9592160923997, lng: 2.5442526246066235 },
-                { lat: 48.960856054215995, lng: 2.542822564175688 },
-                { lat: 48.96347397617976, lng: 2.551128286325965 },
-                { lat: 48.96126693131206, lng: 2.552458010978878 }
-
-
-            ]
+           /* var lines = 
 
             var polylines = new google.maps.Polyline({
                 path: lines, // chemin du tracé
@@ -84,11 +88,15 @@
                 strokeWeight: 2 // grosseur du tracé
 
             });
-            polylines.setMap(carte)
+            polylines.setMap(carte)*/
+
+
+          
 
 
 
-
+            }
+            function courses(carte,idSelector) {
 
 
             }
