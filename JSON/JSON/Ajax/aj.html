@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>JSON</h1>
+
+<script>
+
+window.onload=loadDoc(showData)
+
+var famille=null;
+
+var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+
+     if(this.readyState==4 && this.status==200)
+
+     {
+         console.log(familles)
+         famille=callback(JSON.parse(familles))
+     }
+
+
+
+  }
+
+  xhttp.open("GET", "tab_familles.json",true);
+  xhttp.send();
+
+function showData(famille)
+{
+  
+    for(let i=0;i<famille.length;i++)
+         
+    var famille=familles[i];
+
+       
+
+    return employe;
+}
+
+</script>
+</body>
+</html>
+
