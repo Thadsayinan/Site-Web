@@ -2,8 +2,8 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>Google Maps</title>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Y32T_PJHZxYcK3BJYJFNwSl6cuvLXpo&callback=initialiser"
-    async></script>
+<script src="http://maps.google.com/maps/api/js?sensor=false"
+></script>
 </head>
 <body>
 
@@ -55,13 +55,27 @@ var marquers = [
         var carte = new google.maps.Map(document.getElementById("carte"), options);
 
 
-        
+        setMarkers(carte);
 
 
     }
     
-   
-   
+    function setMarkers(carte) {
+        
+        
+
+        for (let i = 0; i < marquers.length; i++) {
+            var marquer = marquers[i];
+
+            new google.maps.Marker({
+                position: { lat: marquer[1], lng: marquer[2] },
+                map:carte,
+                title:marquer[0],
+                zIndex: marquer[3],
+            });
+        }
+    }
+
 
 
     // On lance l'initialisation de notre carte

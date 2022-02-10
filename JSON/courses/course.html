@@ -3,7 +3,9 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <title>Google Maps</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Y32T_PJHZxYcK3BJYJFNwSl6cuvLXpo&callback=initialiser" async></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Y32T_PJHZxYcK3BJYJFNwSl6cuvLXpo&callback=initialiser"
+        async></script>
 </head>
 
 <body>
@@ -15,23 +17,23 @@
         }
     </style>
     <div>
-        <select name="courses" id="number">
+        <select id="Myselect" onchange="initialiser(this.value)">
             <option value="course1">Course 1</option>
             <option value="course2">Course 2</option>
             <option value="course3">Course 3</option>
-           
-          </select>
+
+        </select>
 
     </div>
 
     <div id="carte"></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
-    <script>
-window.load=initialiser();
 
-        function initialiser(idSelector) {
+    <script>
+        window.load = initialiser();
+
+        function initialiser(idSelect) {
             // Objet representant une coordonnée
             var latlng = new google.maps.LatLng(48.959023, 2.547681);
             /*
@@ -41,7 +43,7 @@ window.load=initialiser();
             */
             var options = {
                 center: latlng,
-                zoom: 15,
+                zoom: 13,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
 
@@ -57,28 +59,46 @@ window.load=initialiser();
                 url: "courses.json",
                 method: "GET",
                 dataType: "json",
-                success: function (marquers) {
-                   //ole.log(marquers[0]["markers"]);
-                   
-                    for (let i = 0; i < marquers.length; i++) {
-                        var marquer = marquers[i]["markers"];
+                //data: idSelect,
+                success: function (courses) {
 
-                        console.log(marquer[i])
-                        
+                 
+                    console.log(courses)
+
+
+                    for (let i = 0; i < courses.length; i++) {
+                        var course = courses[i]["markers"];
+
+                        console.log(course)
+
+                        for(let i=0;i<course.length)
+                        var marker=course[i];
+
+                        console.log(marker)
+
                         new google.maps.Marker({
-                            position: { lat: marquer[i][i], lng: marquer[i][i ]},
+                            position: { lat: course[i][y].lat, lng: course[i][y].lng },
                             map: carte,
-                            //title: marquer[0],
-                            //zIndex: marquer[3],
+                            
                         });
-                       
+
 
                     }
                 }
 
-            }); 
+            });
 
-           /* var lines = 
+
+
+
+
+
+            setCourse(carte, idSelect);
+
+        }
+        function idSelect(carte, idSelect) {
+
+            var lines = course[i].lat.lng;
 
             var polylines = new google.maps.Polyline({
                 path: lines, // chemin du tracé
@@ -88,20 +108,14 @@ window.load=initialiser();
                 strokeWeight: 2 // grosseur du tracé
 
             });
-            polylines.setMap(carte)*/
-
-
-          
+            polylines.setMap(carte);
 
 
 
-            }
-            function courses(carte,idSelector) {
 
-
-            }
-    // On lance l'initialisation de notre carte
-    initialiser();
+        }
+        // On lance l'initialisation de notre carte
+        initialiser();
 
     </script>
 </body>

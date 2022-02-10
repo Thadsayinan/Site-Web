@@ -3,9 +3,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <title>Google Maps</title>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Y32T_PJHZxYcK3BJYJFNwSl6cuvLXpo&callback=initialiser"
-        async></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 </head>
 
 <body>
@@ -17,15 +15,6 @@
         #carte {
             height: 400px;
             width: 500px;
-        }
-
-
-        /* Optional: Makes the sample page fill the window. */
-        html,
-        body {
-            height: 100%;
-            margin: 50;
-            padding: 10;
         }
     </style>
 
@@ -69,10 +58,9 @@
             var carte = new google.maps.Map(document.getElementById("carte"), options);
 
             for (i = 0; i < marquers.length; i++) {
-
                 var marquer = marquers[i];
 
-                const markerpro = new google.maps.Marker({
+                new google.maps.Marker({
                     position: { lat: marquer[1], lng: marquer[2] },
                     map: carte,
                     title: marquer[0],
@@ -80,35 +68,6 @@
                 });
 
 
-                markerpro.addListener("click", function () {
-                    alert("you click on " + markerpro.title);
-                });
-
-                const contentString =
-                '<div id="content">' +
-                '<div id="siteNotice">' +
-                "</div>" +
-                '<h1 id="firstHeading" class="firstHeading">Lycée Jean Rostand</h1>' +
-                '<div id="bodyContent">' +
-                "<p><b>Jean Rostand</b>, est le lycée qui acceuille la meilleure section <b>BTS SNIR</b> d'ile de france! " +
-                "<br/> les statistiques y sont impréssionnantes... " +
-                "here We are coding fun :'!'.</p>" +
-                "<a href=https://lycee-jeanrostand.fr/>https://lycee-jeanrostand.fr</a> " +
-                "</div>" +
-                + "<br/>" +
-                '<img src="https://static.nationalgeographic.fr/files/styles/image_3200/public/re%CC%81sume%CC%81_siliconvalley.webp?w=1600&h=1014" width=500em heigth=500em>' +
-                "</div>";
-            const infowindow = new google.maps.InfoWindow({
-                content: contentString,
-            });
-            const marker = new google.maps.Marker({
-                position: { lat: marquer[1], lng: marquer[2] },
-                map: carte,
-                title: marquer[0],
-            });
-            marker.addListener("click", () => {
-                infowindow.open(carte, marker);
-            });
             }
 
 
@@ -134,9 +93,24 @@
                 strokeWeight: 2 // grosseur du tracé
 
             });
-            polylines.setMap(carte);
+            polylines.setMap(carte)
+
+
+
+
 
             
+
+            //notez la présence de l'argument "event" entre les parenthèses de "function()"
+
+            google.maps.event.addListener(marquers, 'click',
+
+                function (event) {
+
+                    
+                    alert("Le marqueur a été cliqué.");//message
+
+                });
 
 
 
